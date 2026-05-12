@@ -1,46 +1,58 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/data";
 
-const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Design"];
-
-const featuredProjects = projects.slice(0, 5);
+const services = [
+  "UI/UX Design",
+  "Brand Identity",
+  "Event Design",
+  "Product Design",
+];
 
 export default function HomePage() {
   return (
-    <main style={{ paddingTop: "60px" }}>
+    <main style={{ paddingTop: "44px" }}>
       <div className="three-col">
-        {/* LEFT COLUMN */}
+        {/* ── LEFT COLUMN ── */}
         <div className="col-left">
           {/* Top: Name */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            <h1 className="text-heading1">Hello! I&apos;m Magdalena.</h1>
-          </div>
+          <h1 className="text-heading1">Hello! I&apos;m Magdalena.</h1>
 
-          {/* Middle: Socials */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+          {/* Middle: Social icons */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
             <a
               href="https://www.linkedin.com/in/magdalenakruk/"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-link text-14"
+              style={{ display: "inline-block", width: 18, height: 18 }}
+              aria-label="LinkedIn"
             >
-              LinkedIn ↗
+              {/* LinkedIn icon */}
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)" />
+                <path d="M5 7.5H6.5V13H5V7.5ZM5.75 6.5C5.33579 6.5 5 6.16421 5 5.75C5 5.33579 5.33579 5 5.75 5C6.16421 5 6.5 5.33579 6.5 5.75C6.5 6.16421 6.16421 6.5 5.75 6.5Z" fill="rgb(18,18,18)" />
+                <path d="M8 7.5H9.5V8.25C9.75 7.75 10.5 7.5 11 7.5C12.5 7.5 13 8.5 13 9.5V13H11.5V10C11.5 9.17157 11.3284 8.5 10.5 8.5C9.67157 8.5 9.5 9.17157 9.5 10V13H8V7.5Z" fill="rgb(18,18,18)" />
+              </svg>
             </a>
             <a
               href="https://www.instagram.com/mad_cor_beau/"
               target="_blank"
               rel="noopener noreferrer"
-              className="social-link text-14"
+              style={{ display: "inline-block", width: 18, height: 18 }}
+              aria-label="Instagram"
             >
-              Instagram ↗
+              {/* Instagram icon */}
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.5" y="0.5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)" />
+                <circle cx="9" cy="9" r="2.5" stroke="rgb(18,18,18)" />
+                <circle cx="12.5" cy="5.5" r="0.5" fill="rgb(18,18,18)" />
+              </svg>
             </a>
           </div>
 
           {/* Bottom: Services */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {services.map((s) => (
               <div key={s} className="service-tag">
                 {s}
@@ -49,165 +61,112 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* MIDDLE COLUMN */}
+        {/* ── MIDDLE COLUMN ── */}
         <div className="col-middle">
           {/* Sticky description */}
           <div
             style={{
               position: "sticky",
-              top: "60px",
+              top: "44px",
               zIndex: 1,
               backgroundColor: "var(--color-white)",
               paddingBottom: "8px",
             }}
           >
-            <p
-              className="text-16"
-              style={{ maxWidth: "600px", marginBottom: "16px" }}
-            >
-              Senior UX/UI &amp; Brand Designer blending strategy, story, and
-              systems into brands and digital products that are clear,
-              memorable, and built to last.
+            {/* Two-toned description */}
+            <p className="text-16" style={{ maxWidth: "600px" }}>
+              <span>
+                Senior UX/UI &amp; Brand Designer blending strategy, story, and
+                systems into brands and digital products{" "}
+              </span>
+              <span style={{ color: "var(--color-gray)" }}>
+                that are clear, memorable, and built to last.
+              </span>
             </p>
+
+            {/* Selected work header */}
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "flex-end",
-                paddingTop: "16px",
+                alignItems: "baseline",
+                marginTop: "30vh",
+                paddingBottom: "8px",
               }}
             >
               <span className="text-14" style={{ color: "var(--color-gray)" }}>
                 Selected work
               </span>
               <span className="text-14" style={{ color: "var(--color-gray)" }}>
-                ({featuredProjects.length})
+                ({projects.length})
               </span>
             </div>
           </div>
 
-          {/* Projects list */}
+          {/* Project cards — full-width images */}
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: "12px",
-              paddingTop: "12px",
+              gap: "0",
               paddingBottom: "200px",
             }}
           >
-            {featuredProjects.map((project) => (
+            {projects.map((project) => (
               <Link
                 key={project.slug}
                 href={`/work/${project.slug}`}
-                style={{ textDecoration: "none", color: "inherit" }}
+                className="project-card"
+                style={{ marginBottom: "12px" }}
               >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    padding: "12px 0",
-                    borderBottom: "1px solid var(--color-light-gray)",
-                    gap: "16px",
-                    cursor: "pointer",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "2px",
-                    }}
-                  >
-                    <span className="text-14" style={{ fontWeight: 500 }}>
-                      {project.title}
-                    </span>
-                    <span
-                      className="text-12"
-                      style={{ color: "var(--color-gray)" }}
-                    >
-                      {project.description}
-                    </span>
-                  </div>
-                  <span
-                    className="text-12"
-                    style={{
-                      color: "var(--color-gray)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.previewImage}
+                  alt={project.title}
+                  style={{ width: "100%", aspectRatio: "16/10", objectFit: "cover", display: "block" }}
+                  loading="lazy"
+                />
+                <div className="project-card-meta">
+                  <span className="text-14">
+                    <strong style={{ fontWeight: 500 }}>{project.title}</strong>
+                    <span style={{ color: "var(--color-gray)" }}> • {project.description}</span>
+                  </span>
+                  <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
                     {project.year}
                   </span>
                 </div>
               </Link>
             ))}
-
-            {/* View all link */}
-            <div style={{ paddingTop: "24px" }}>
-              <Link href="/work" className="btn-secondary">
-                View all work →
-              </Link>
-            </div>
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* ── RIGHT COLUMN ── */}
         <div className="col-right">
-          {/* Top: Profile card */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "8px",
-            }}
-          >
+          {/* Top: Available + Photo + Info */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
             <div className="available-dot">Available for work</div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "8px",
-                marginTop: "8px",
-              }}
-            >
-              <div
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  aspectRatio: "0.758",
-                  overflow: "hidden",
-                  backgroundColor: "var(--color-light-gray)",
-                }}
-              >
-                <Image
-                  src="https://framerusercontent.com/images/kvZUjM81xHq7MPsioY0TAcK0ipU.jpg"
-                  alt="Magdalena Kruk"
-                  fill
-                  style={{ objectFit: "cover" }}
-                  sizes="25vw"
-                />
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                <span className="text-14">Senior Brand &amp; Product Designer</span>
-                <span className="text-14" style={{ color: "var(--color-gray)" }}>
-                  Based in Wrocław, Poland
-                </span>
-              </div>
+            <div style={{ marginTop: "8px" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://framerusercontent.com/images/kvZUjM81xHq7MPsioY0TAcK0ipU.jpg"
+                alt="Magdalena Kruk"
+                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", display: "block" }}
+              />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2px", marginTop: "4px" }}>
+              <span className="text-14">Senior Brand &amp; Product Designer</span>
+              <span className="text-14" style={{ color: "var(--color-gray)" }}>
+                Based in Wrocław, Poland
+              </span>
             </div>
           </div>
 
-          {/* Bottom: Contact buttons */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "4px",
-            }}
-          >
+          {/* Bottom: Contact */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
             <a
               href="mailto:magdalena.kruk.design@gmail.com"
-              className="btn-primary"
+              className="text-14"
+              style={{ textDecoration: "none", color: "var(--color-black)" }}
             >
               magdalena.kruk.design@gmail.com
             </a>
@@ -215,9 +174,10 @@ export default function HomePage() {
               href="https://www.linkedin.com/in/magdalenakruk/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary"
+              className="text-14"
+              style={{ textDecoration: "none", color: "var(--color-gray)" }}
             >
-              LinkedIn ↗
+              LinkedIn
             </a>
           </div>
         </div>

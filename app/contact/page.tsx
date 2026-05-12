@@ -36,7 +36,7 @@ export default function ContactPage() {
   }
 
   return (
-    <main style={{ paddingTop: "60px" }}>
+    <main style={{ paddingTop: "44px" }}>
       <div className="three-col">
         {/* LEFT — empty */}
         <div className="col-left" />

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Magdalena Kruk — Senior Brand & Product Designer",
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body style={{ fontFamily: "var(--font-geist-sans), sans-serif" }}>
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );

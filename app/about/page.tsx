@@ -1,8 +1,7 @@
-import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About — Magdalena Kruk",
+  title: "Info — Magdalena Kruk",
   description:
     "Senior Brand & Product Designer based in Wrocław, Poland. Working at the intersection of brand and product.",
 };
@@ -71,97 +70,71 @@ const notableProjects = [
 
 export default function AboutPage() {
   return (
-    <main style={{ paddingTop: "60px" }}>
+    <main style={{ paddingTop: "44px" }}>
       <div className="three-col">
-        {/* LEFT COLUMN */}
+
+        {/* ── LEFT COLUMN ── */}
         <div className="col-left">
-          {/* Top: Photo */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <div
-              style={{
-                position: "relative",
-                width: "55%",
-                aspectRatio: "0.751",
-                overflow: "hidden",
-                backgroundColor: "var(--color-light-gray)",
-              }}
-            >
-              <Image
-                src="https://framerusercontent.com/images/ML35xR4TDNdu1vOfg8Wm81Uq9I.jpg"
-                alt="Magdalena Kruk"
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="15vw"
-              />
-            </div>
-            <span className="text-12" style={{ color: "var(--color-gray)" }}>
-              © 2026
-            </span>
+          {/* Photo */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://framerusercontent.com/images/ML35xR4TDNdu1vOfg8Wm81Uq9I.jpg"
+              alt="Magdalena Kruk"
+              style={{ width: "60%", aspectRatio: "3/4", objectFit: "cover", display: "block" }}
+            />
+            <span className="text-12" style={{ color: "var(--color-gray)" }}>© 2026</span>
           </div>
 
-          {/* Bottom: Title */}
-          <div>
-            <h1 className="text-heading1">About Me.</h1>
-          </div>
+          {/* Title */}
+          <h1 className="text-heading1">About Me.</h1>
         </div>
 
-        {/* MIDDLE COLUMN */}
+        {/* ── MIDDLE COLUMN ── */}
         <div className="col-middle" style={{ paddingBottom: "120px" }}>
+
           {/* Bio */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "40px", marginBottom: "120px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-              <h2
-                className="text-heading2"
-                style={{ maxWidth: "600px", marginBottom: 0 }}
-              >
-                I&apos;m Magdalena — a Senior Brand &amp; Product Designer based
-                in Wrocław, Poland. I work at the intersection of brand and
-                product, creating visual identities, digital experiences, and
-                products that are intentional and coherent.
-              </h2>
-              <p className="text-16" style={{ maxWidth: "520px", color: "var(--color-gray)" }}>
-                Currently at Callstack, where I lead design for brand, product,
-                and events — from brandbook to mobile app, from conference
-                identity to design system. I work end-to-end: strategy, UI/UX,
-                handoff, and everything in between.
-              </p>
-            </div>
+          <div style={{ marginBottom: "80px", display: "flex", flexDirection: "column", gap: "24px" }}>
+            <h2 className="text-heading2" style={{ maxWidth: "600px" }}>
+              I&apos;m Magdalena — a Senior Brand &amp; Product Designer based
+              in Wrocław, Poland. I work at the intersection of brand and
+              product, creating visual identities, digital experiences, and
+              products that are intentional and coherent.
+            </h2>
+            <p className="text-16" style={{ maxWidth: "520px", color: "var(--color-gray)" }}>
+              Currently at Callstack, where I lead design for brand, product,
+              and events — from brandbook to mobile app, from conference
+              identity to design system. I work end-to-end: strategy, UI/UX,
+              handoff, and everything in between.
+            </p>
           </div>
 
           {/* Services */}
           <section style={{ marginBottom: "80px" }}>
-            <div style={{ marginBottom: "24px" }}>
-              <h2 className="text-heading2" style={{ marginBottom: "16px" }}>
-                Services
-              </h2>
-              <div className="divider" />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {services.map((service) => (
-                <div
-                  key={service.title}
-                  style={{
-                    padding: "20px 0",
-                    borderBottom: "1px solid var(--color-light-gray)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "8px",
-                  }}
-                >
-                  <h3 className="text-heading3">{service.title}</h3>
-                  <p className="text-14" style={{ color: "var(--color-gray)", maxWidth: "520px" }}>
-                    {service.description}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <h2 className="text-heading2" style={{ marginBottom: "16px" }}>Services</h2>
+            <div className="divider" />
+            {services.map((service) => (
+              <div
+                key={service.title}
+                style={{
+                  padding: "20px 0",
+                  borderBottom: "1px solid var(--color-light-gray)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                }}
+              >
+                <h3 className="text-heading3">{service.title}</h3>
+                <p className="text-14" style={{ color: "var(--color-gray)", maxWidth: "520px" }}>
+                  {service.description}
+                </p>
+              </div>
+            ))}
           </section>
 
           {/* Software Stack */}
           <section style={{ marginBottom: "80px" }}>
-            <h2 className="text-heading2" style={{ marginBottom: "16px" }}>
-              Software Stack
-            </h2>
+            <h2 className="text-heading2" style={{ marginBottom: "16px" }}>Software Stack</h2>
             <div
               style={{
                 display: "grid",
@@ -170,13 +143,18 @@ export default function AboutPage() {
               }}
             >
               {tools.map((tool) => (
-                <div key={tool.name} className="tool-item">
-                  <span className="text-14" style={{ fontWeight: 500 }}>
-                    {tool.name}
-                  </span>
-                  <span className="text-12" style={{ color: "var(--color-gray)" }}>
-                    {tool.description}
-                  </span>
+                <div
+                  key={tool.name}
+                  style={{
+                    padding: "16px",
+                    border: "1px solid var(--color-light-gray)",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "2px",
+                  }}
+                >
+                  <span className="text-14">{tool.name}</span>
+                  <span className="text-12" style={{ color: "var(--color-gray)" }}>{tool.description}</span>
                 </div>
               ))}
             </div>
@@ -184,95 +162,69 @@ export default function AboutPage() {
 
           {/* Experience */}
           <section>
-            <div style={{ marginBottom: "24px" }}>
-              <h2 className="text-heading2" style={{ marginBottom: "16px" }}>
-                Experience
-              </h2>
-              <div className="divider" />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
-              {experience.map((job) => (
-                <div key={job.title} className="experience-card">
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "flex-start",
-                      gap: "16px",
-                    }}
-                  >
-                    <div>
-                      <h3 className="text-heading3">{job.title}</h3>
-                      <span className="text-14" style={{ color: "var(--color-gray)" }}>
-                        {job.company}
-                      </span>
-                    </div>
-                    <span
-                      className="text-12"
-                      style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}
-                    >
-                      {job.period}
-                    </span>
+            <h2 className="text-heading2" style={{ marginBottom: "16px" }}>Experience</h2>
+            <div className="divider" />
+            {experience.map((job) => (
+              <div
+                key={job.title}
+                style={{
+                  padding: "20px 0",
+                  borderBottom: "1px solid var(--color-light-gray)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                }}
+              >
+                <div style={{ display: "flex", justifyContent: "space-between", gap: "16px" }}>
+                  <div>
+                    <h3 className="text-heading3">{job.title}</h3>
+                    <span className="text-14" style={{ color: "var(--color-gray)" }}>{job.company}</span>
                   </div>
-                  <p className="text-14" style={{ color: "var(--color-gray)", maxWidth: "520px" }}>
-                    {job.description}
-                  </p>
+                  <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
+                    {job.period}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <p className="text-14" style={{ color: "var(--color-gray)", maxWidth: "520px" }}>
+                  {job.description}
+                </p>
+              </div>
+            ))}
           </section>
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* ── RIGHT COLUMN ── */}
         <div className="col-right">
           {/* Stats */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {stats.map((stat) => (
-              <div key={stat.label} className="stat-item">
-                <span className="text-12" style={{ color: "var(--color-gray)" }}>
-                  {stat.label}
-                </span>
-                <span className="text-14" style={{ fontWeight: 500 }}>
-                  {stat.value}
-                </span>
+              <div key={stat.label} className="meta-row">
+                <span className="meta-label">{stat.label}</span>
+                <span className="meta-value">{stat.value}</span>
               </div>
             ))}
           </div>
 
-          {/* Notable Projects */}
+          {/* Notable projects */}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <div>
-              <span className="text-12" style={{ color: "var(--color-gray)" }}>
-                Projects
-              </span>
-              <div className="divider" style={{ marginTop: "8px" }} />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-              {notableProjects.map((project) => (
-                <div
-                  key={project.name}
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    padding: "6px 0",
-                    gap: "8px",
-                  }}
-                >
-                  <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                    <span className="text-12" style={{ fontWeight: 500 }}>
-                      {project.name}
-                    </span>
-                    <span className="text-12" style={{ color: "var(--color-gray)" }}>
-                      {project.detail}
-                    </span>
-                  </div>
-                  <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
-                    {project.year}
-                  </span>
+            <span className="text-12" style={{ color: "var(--color-gray)" }}>Projects</span>
+            <div className="divider" />
+            {notableProjects.map((p) => (
+              <div
+                key={p.name}
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "flex-start",
+                  gap: "8px",
+                }}
+              >
+                <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
+                  <span className="text-12" style={{ fontWeight: 500 }}>{p.name}</span>
+                  <span className="text-12" style={{ color: "var(--color-gray)" }}>{p.detail}</span>
                 </div>
-              ))}
-            </div>
+                <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>{p.year}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

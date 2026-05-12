@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { projects, categories, getCategoryLabel } from "@/lib/data";
+import { projects, categories } from "@/lib/data";
 
 export default function WorkPage() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -14,18 +13,18 @@ export default function WorkPage() {
       : projects.filter((p) => p.categories.includes(activeCategory));
 
   return (
-    <main style={{ paddingTop: "60px" }}>
+    <main style={{ paddingTop: "44px" }}>
       <div className="three-col">
-        {/* LEFT — empty sticky column */}
+        {/* LEFT — empty sticky */}
         <div className="col-left" />
 
         {/* MIDDLE COLUMN */}
-        <div className="col-middle" style={{ paddingBottom: "100px" }}>
-          {/* Sticky header */}
+        <div className="col-middle" style={{ paddingBottom: "120px" }}>
+          {/* Header row: title + filters */}
           <div
             style={{
               position: "sticky",
-              top: "60px",
+              top: "44px",
               zIndex: 1,
               backgroundColor: "var(--color-white)",
               paddingBottom: "24px",
@@ -36,37 +35,61 @@ export default function WorkPage() {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "flex-start",
-                gap: "24px",
+                gap: "32px",
                 marginBottom: "24px",
               }}
             >
               <h1 className="text-heading1">My Work.</h1>
-              {/* Category filters */}
+
+              {/* Category filters — vertical text list */}
               <div
                 style={{
                   display: "flex",
-                  gap: "6px",
-                  flexWrap: "wrap",
-                  justifyContent: "flex-end",
-                  alignItems: "flex-start",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  gap: "2px",
                   paddingTop: "8px",
+                  flexShrink: 0,
                 }}
               >
                 <button
-                  className={`category-pill ${activeCategory === null ? "active" : ""}`}
                   onClick={() => setActiveCategory(null)}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: "14px",
+                    fontWeight: activeCategory === null ? 600 : 400,
+                    letterSpacing: "-0.03em",
+                    color: activeCategory === null ? "var(--color-black)" : "var(--color-gray)",
+                    padding: "2px 0",
+                    fontFamily: "inherit",
+                  }}
                 >
                   All
                 </button>
                 {categories.map((cat) => (
                   <button
                     key={cat.slug}
-                    className={`category-pill ${activeCategory === cat.slug ? "active" : ""}`}
                     onClick={() =>
                       setActiveCategory(
                         activeCategory === cat.slug ? null : cat.slug
                       )
                     }
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      fontSize: "14px",
+                      fontWeight: activeCategory === cat.slug ? 600 : 400,
+                      letterSpacing: "-0.03em",
+                      color:
+                        activeCategory === cat.slug
+                          ? "var(--color-black)"
+                          : "var(--color-gray)",
+                      padding: "2px 0",
+                      fontFamily: "inherit",
+                    }}
                   >
                     {cat.title}
                   </button>
@@ -76,12 +99,12 @@ export default function WorkPage() {
             <div className="divider" />
           </div>
 
-          {/* Projects grid */}
+          {/* 2-column grid */}
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
-              gap: "12px",
+              gap: "24px 12px",
               paddingTop: "12px",
             }}
           >
@@ -91,88 +114,34 @@ export default function WorkPage() {
                 href={`/work/${project.slug}`}
                 className="project-card"
               >
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio: "4/3",
-                    overflow: "hidden",
-                    backgroundColor: "var(--color-light-gray)",
-                  }}
-                >
-                  <Image
-                    src={project.previewImage}
-                    alt={project.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 900px) 100vw, 33vw"
-                  />
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    gap: "8px",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "2px",
-                    }}
-                  >
-                    <span className="text-14" style={{ fontWeight: 500 }}>
-                      {project.title}
-                    </span>
-                    <span
-                      className="text-12"
-                      style={{ color: "var(--color-gray)" }}
-                    >
-                      {project.description}
-                    </span>
-                  </div>
-                  <span
-                    className="text-12"
-                    style={{
-                      color: "var(--color-gray)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.previewImage}
+                  alt={project.title}
+                  style={{ width: "100%", aspectRatio: "4/3", objectFit: "cover", display: "block" }}
+                  loading="lazy"
+                />
+                <div className="project-card-meta">
+                  <span className="text-14">
+                    <strong style={{ fontWeight: 500 }}>{project.title}</strong>
+                    <span style={{ color: "var(--color-gray)" }}> • {project.description}</span>
+                  </span>
+                  <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
                     {project.year}
                   </span>
-                </div>
-                <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-                  {project.categories.map((cat) => (
-                    <span
-                      key={cat}
-                      className="text-12"
-                      style={{
-                        padding: "2px 8px",
-                        border: "1px solid var(--color-light-gray)",
-                        color: "var(--color-gray)",
-                      }}
-                    >
-                      {getCategoryLabel(cat)}
-                    </span>
-                  ))}
                 </div>
               </Link>
             ))}
           </div>
 
           {filtered.length === 0 && (
-            <p
-              className="text-14"
-              style={{ color: "var(--color-gray)", paddingTop: "40px" }}
-            >
-              No projects in this category yet.
+            <p className="text-14" style={{ color: "var(--color-gray)", paddingTop: "40px" }}>
+              No projects in this category.
             </p>
           )}
         </div>
 
-        {/* RIGHT — empty sticky column */}
+        {/* RIGHT — empty sticky */}
         <div className="col-right" />
       </div>
     </main>

@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/about", label: "Info" },
   { href: "/work", label: "Work" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -23,34 +23,42 @@ export default function Navigation() {
         zIndex: 100,
         backgroundColor: "var(--color-white)",
         borderBottom: "1px solid var(--color-light-gray)",
-        height: "60px",
         display: "flex",
         alignItems: "center",
-        padding: "0 20px",
+        padding: "12px 20px",
         justifyContent: "space-between",
+        gap: "20px",
       }}
     >
-      {/* Logo / Name */}
-      <Link
-        href="/"
+      {/* Logo — 25% width matching left column */}
+      <div style={{ width: "25%", flexShrink: 0 }}>
+        <Link href="/" style={{ display: "inline-block" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://framerusercontent.com/images/2Q3brUlFCqNHgf1ZgYPX2jE1Q.svg"
+            alt="Magdalena Kruk"
+            style={{ height: "16px", display: "block" }}
+          />
+        </Link>
+      </div>
+
+      {/* Nav links — centered */}
+      <div
         style={{
-          textDecoration: "none",
-          color: "var(--color-black)",
-          fontSize: "14px",
-          fontWeight: 500,
-          letterSpacing: "-0.03em",
+          flex: 1,
+          display: "flex",
+          gap: "4px",
+          alignItems: "center",
+          justifyContent: "flex-start",
+          paddingLeft: "16px",
         }}
       >
-        Magdalena Kruk
-      </Link>
-
-      {/* Nav links */}
-      <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
-        {navLinks.map((link) => {
+        {navLinks.map((link, i) => {
           const isActive =
             link.href === "/"
               ? pathname === "/"
               : pathname.startsWith(link.href);
+          const isLast = i === navLinks.length - 1;
           return (
             <Link
               key={link.href}
@@ -58,28 +66,39 @@ export default function Navigation() {
               style={{
                 textDecoration: "none",
                 fontSize: "14px",
-                fontWeight: 500,
+                fontWeight: isActive ? 600 : 400,
                 letterSpacing: "-0.03em",
-                color: isActive
-                  ? "var(--color-black)"
-                  : "var(--color-gray)",
-                transition: "color 0.15s ease",
+                color: isActive ? "var(--color-black)" : "var(--color-gray)",
               }}
             >
-              {link.label}
+              {link.label}{isLast ? "" : ","}
             </Link>
           );
         })}
       </div>
 
-      {/* CTA */}
-      <a
-        href="mailto:magdalena.kruk.design@gmail.com"
-        className="btn-primary"
-        style={{ fontSize: "13px", padding: "6px 12px" }}
+      {/* Get in touch — 25% width matching right column */}
+      <div
+        style={{
+          width: "25%",
+          flexShrink: 0,
+          display: "flex",
+          justifyContent: "flex-end",
+        }}
       >
-        Get in touch
-      </a>
+        <a
+          href="mailto:magdalena.kruk.design@gmail.com"
+          style={{
+            textDecoration: "none",
+            fontSize: "14px",
+            fontWeight: 400,
+            letterSpacing: "-0.03em",
+            color: "var(--color-black)",
+          }}
+        >
+          Get in touch
+        </a>
+      </div>
     </nav>
   );
 }
