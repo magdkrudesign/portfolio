@@ -26,7 +26,7 @@ export default function ProjectPage({ params }: Props) {
   const next = projects[(idx + 1) % projects.length];
 
   return (
-    <main style={{ paddingTop: "44px" }}>
+    <main>
       <div className="three-col">
 
         {/* ── LEFT COLUMN ── title + thumbnail + meta */}

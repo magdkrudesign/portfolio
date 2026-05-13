@@ -70,7 +70,7 @@ const notableProjects = [
 
 export default function AboutPage() {
   return (
-    <main style={{ paddingTop: "44px" }}>
+    <main>
       <div className="three-col">
 
         {/* ── LEFT COLUMN ── */}

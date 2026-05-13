@@ -13,7 +13,7 @@ export default function WorkPage() {
       : projects.filter((p) => p.categories.includes(activeCategory));
 
   return (
-    <main style={{ paddingTop: "44px" }}>
+    <main>
       <div className="three-col">
         {/* LEFT — empty sticky */}
         <div className="col-left" />
@@ -24,7 +24,7 @@ export default function WorkPage() {
           <div
             style={{
               position: "sticky",
-              top: "44px",
+              top: "0",
               zIndex: 1,
               backgroundColor: "var(--color-white)",
               paddingBottom: "24px",

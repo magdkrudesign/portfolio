@@ -2,123 +2,96 @@
 
 import Link from "next/link";
 import { projects } from "@/lib/data";
+import PageFooter from "@/components/PageFooter";
 
-const services = [
-  "UI/UX Design",
-  "Brand Identity",
-  "Event Design",
-  "Product Design",
-];
+const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Design"];
 
 export default function HomePage() {
   return (
-    <main style={{ paddingTop: "44px" }}>
+    <main>
       <div className="three-col">
-        {/* ── LEFT COLUMN ── */}
-        <div className="col-left">
-          {/* Top: Name */}
-          <h1 className="text-heading1">Hello! I&apos;m Magdalena.</h1>
 
-          {/* Middle: Social icons */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+        {/* ── LEFT ── name · socials · services */}
+        <div className="col-left">
+          {/* Top: heading — Framer fixes this at 290px wide */}
+          <h1 className="text-heading1" style={{ maxWidth: 290 }}>
+            Hello! I&apos;m Magdalena.
+          </h1>
+
+          {/* Middle: social icons 18×18 */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             <a
               href="https://www.linkedin.com/in/magdalenakruk/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "inline-block", width: 18, height: 18 }}
+              target="_blank" rel="noopener noreferrer"
               aria-label="LinkedIn"
+              style={{ display: "inline-block", width: 18, height: 18 }}
             >
-              {/* LinkedIn icon */}
-              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.5" y="0.5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)" />
-                <path d="M5 7.5H6.5V13H5V7.5ZM5.75 6.5C5.33579 6.5 5 6.16421 5 5.75C5 5.33579 5.33579 5 5.75 5C6.16421 5 6.5 5.33579 6.5 5.75C6.5 6.16421 6.16421 6.5 5.75 6.5Z" fill="rgb(18,18,18)" />
-                <path d="M8 7.5H9.5V8.25C9.75 7.75 10.5 7.5 11 7.5C12.5 7.5 13 8.5 13 9.5V13H11.5V10C11.5 9.17157 11.3284 8.5 10.5 8.5C9.67157 8.5 9.5 9.17157 9.5 10V13H8V7.5Z" fill="rgb(18,18,18)" />
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x=".5" y=".5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)"/>
+                <path d="M5 7.5h1.5V13H5V7.5Zm.75-2a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Z" fill="rgb(18,18,18)"/>
+                <path d="M8 7.5h1.4v.76c.28-.5.95-.76 1.6-.76 1.5 0 2 .9 2 2V13h-1.5v-3c0-.83-.17-1.5-1-1.5s-1 .67-1 1.5v3H8V7.5Z" fill="rgb(18,18,18)"/>
               </svg>
             </a>
             <a
               href="https://www.instagram.com/mad_cor_beau/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ display: "inline-block", width: 18, height: 18 }}
+              target="_blank" rel="noopener noreferrer"
               aria-label="Instagram"
+              style={{ display: "inline-block", width: 18, height: 18 }}
             >
-              {/* Instagram icon */}
-              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0.5" y="0.5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)" />
-                <circle cx="9" cy="9" r="2.5" stroke="rgb(18,18,18)" />
-                <circle cx="12.5" cy="5.5" r="0.5" fill="rgb(18,18,18)" />
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x=".5" y=".5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)"/>
+                <circle cx="9" cy="9" r="2.5" stroke="rgb(18,18,18)"/>
+                <circle cx="12.5" cy="5.5" r=".5" fill="rgb(18,18,18)"/>
               </svg>
             </a>
           </div>
 
-          {/* Bottom: Services */}
+          {/* Bottom: service tags with dividers */}
           <div style={{ display: "flex", flexDirection: "column" }}>
             {services.map((s) => (
-              <div key={s} className="service-tag">
-                {s}
-              </div>
+              <div key={s} className="service-tag">{s}</div>
             ))}
           </div>
         </div>
 
-        {/* ── MIDDLE COLUMN ── */}
+        {/* ── MIDDLE ── scrolls independently */}
         <div className="col-middle">
-          {/* Sticky description */}
-          <div
-            style={{
-              position: "sticky",
-              top: "44px",
-              zIndex: 1,
-              backgroundColor: "var(--color-white)",
-              paddingBottom: "8px",
-            }}
-          >
-            {/* Two-toned description */}
-            <p className="text-16" style={{ maxWidth: "600px" }}>
-              <span>
-                Senior UX/UI &amp; Brand Designer blending strategy, story, and
-                systems into brands and digital products{" "}
-              </span>
+
+          {/* Sticky description — top: var(--col-pad-top) so it locks at 140px from viewport */}
+          <div style={{
+            position: "sticky",
+            top: "var(--col-pad-top)",
+            zIndex: 1,
+            backgroundColor: "var(--color-white)",
+            paddingBottom: 8,
+          }}>
+            <p className="text-16" style={{ maxWidth: 600 }}>
+              Senior UX/UI &amp; Brand Designer blending strategy, story, and
+              systems into brands and digital products{" "}
               <span style={{ color: "var(--color-gray)" }}>
                 that are clear, memorable, and built to last.
               </span>
             </p>
-
-            {/* Selected work header */}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "baseline",
-                marginTop: "30vh",
-                paddingBottom: "8px",
-              }}
-            >
-              <span className="text-14" style={{ color: "var(--color-gray)" }}>
-                Selected work
-              </span>
-              <span className="text-14" style={{ color: "var(--color-gray)" }}>
-                ({projects.length})
-              </span>
-            </div>
           </div>
 
-          {/* Project cards — full-width images */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "0",
-              paddingBottom: "200px",
-            }}
-          >
+          {/* 30 vh spacer (matches Framer's invisible spacer) */}
+          <div style={{ height: "30vh", flexShrink: 0 }} />
+
+          {/* Selected work header */}
+          <div style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+            paddingBottom: 8,
+          }}>
+            <span className="text-14" style={{ color: "var(--color-gray)" }}>Selected work</span>
+            <span className="text-14" style={{ color: "var(--color-gray)" }}>({projects.length})</span>
+          </div>
+
+          {/* Project cards — full-width, stacked, 20 px gap (matches Framer Works gap) */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 20, paddingBottom: 200 }}>
             {projects.map((project) => (
-              <Link
-                key={project.slug}
-                href={`/work/${project.slug}`}
-                className="project-card"
-                style={{ marginBottom: "12px" }}
-              >
+              <Link key={project.slug} href={`/work/${project.slug}`} className="project-card">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.previewImage}
@@ -128,7 +101,7 @@ export default function HomePage() {
                 />
                 <div className="project-card-meta">
                   <span className="text-14">
-                    <strong style={{ fontWeight: 500 }}>{project.title}</strong>
+                    {project.title}
                     <span style={{ color: "var(--color-gray)" }}> • {project.description}</span>
                   </span>
                   <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
@@ -138,31 +111,45 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+
+          <PageFooter />
         </div>
 
-        {/* ── RIGHT COLUMN ── */}
+        {/* ── RIGHT ── available + photo (horizontal) · contact */}
         <div className="col-right">
-          {/* Top: Available + Photo + Info */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-            <div className="available-dot">Available for work</div>
-            <div style={{ marginTop: "8px" }}>
+
+          {/* Top: horizontal — Available (left 1fr) | Profile (right 1fr) */}
+          <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+            {/* Available indicator */}
+            <div style={{ flex: 1 }}>
+              <div className="available-dot">Available for work</div>
+            </div>
+            {/* Profile: photo + name/location */}
+            <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
+              {/* aspectRatio 0.758 = portrait — matches Framer Image node exactly */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="https://framerusercontent.com/images/kvZUjM81xHq7MPsioY0TAcK0ipU.jpg"
                 alt="Magdalena Kruk"
-                style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", display: "block" }}
+                style={{
+                  width: "100%",
+                  aspectRatio: "0.758",
+                  objectFit: "cover",
+                  objectPosition: "top",
+                  display: "block",
+                }}
               />
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "2px", marginTop: "4px" }}>
-              <span className="text-14">Senior Brand &amp; Product Designer</span>
-              <span className="text-14" style={{ color: "var(--color-gray)" }}>
-                Based in Wrocław, Poland
-              </span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <span className="text-14">Senior Brand &amp; Product Designer</span>
+                <span className="text-14" style={{ color: "var(--color-gray)" }}>
+                  Based in Wrocław, Poland
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Bottom: Contact */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+          {/* Bottom: contact links */}
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
             <a
               href="mailto:magdalena.kruk.design@gmail.com"
               className="text-14"
@@ -172,8 +159,7 @@ export default function HomePage() {
             </a>
             <a
               href="https://www.linkedin.com/in/magdalenakruk/"
-              target="_blank"
-              rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer"
               className="text-14"
               style={{ textDecoration: "none", color: "var(--color-gray)" }}
             >
@@ -181,6 +167,7 @@ export default function HomePage() {
             </a>
           </div>
         </div>
+
       </div>
     </main>
   );
