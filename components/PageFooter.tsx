@@ -1,51 +1,49 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
+
+const SEGMENT = "Let's work together · ";
+// Repeat enough times to fill any screen width reliably
+const HALF = SEGMENT.repeat(18);
 
 export default function PageFooter() {
+  const router = useRouter();
+
   return (
-    <footer
-      style={{
-        borderTop: "1px solid var(--color-light-gray)",
-        padding: "80px 0 32px",
-        display: "flex",
-        flexDirection: "column",
-        gap: "40px",
-      }}
+    <div
+      className="marquee-outer"
+      style={{ backgroundColor: "var(--color-black)", marginTop: 40 }}
+      onClick={() => router.push("/contact")}
+      role="link"
+      aria-label="Let's work together — contact page"
+      tabIndex={0}
+      onKeyDown={(e) => e.key === "Enter" && router.push("/contact")}
     >
-      <div style={{ textAlign: "center" }}>
-        <p className="text-heading2" style={{ marginBottom: "24px" }}>
-          Let&apos;s work together.
-        </p>
-        <Link href="/contact" className="btn-primary">
-          Get in touch →
-        </Link>
-      </div>
-
-      <div className="divider" />
-
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: "16px",
-        }}
-      >
-        <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-          <span className="text-14">Magdalena Kruk</span>
-          <a
-            href="https://www.linkedin.com/in/magdalenakruk/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-14"
-            style={{ color: "var(--color-gray)", textDecoration: "none" }}
+      <div style={{ padding: "20px 0" }}>
+        <div className="marquee-track">
+          {/* Two identical halves — animation moves exactly one half = seamless loop */}
+          <span
+            style={{
+              color: "var(--color-white)",
+              fontSize: 14,
+              fontWeight: 500,
+              letterSpacing: "-0.03em",
+            }}
           >
-            LinkedIn ↗
-          </a>
+            {HALF}
+          </span>
+          <span
+            style={{
+              color: "var(--color-white)",
+              fontSize: 14,
+              fontWeight: 500,
+              letterSpacing: "-0.03em",
+            }}
+          >
+            {HALF}
+          </span>
         </div>
-        <span className="text-14" style={{ color: "var(--color-gray)" }}>
-          © 2026 Magdalena Kruk. All rights reserved.
-        </span>
       </div>
-    </footer>
+    </div>
   );
 }

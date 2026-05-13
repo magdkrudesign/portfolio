@@ -242,6 +242,25 @@ main {
 .form-input:focus { border-bottom-color: var(--color-black); }
 .form-input::placeholder { color: var(--color-light-gray); }
 
+/* ─── Marquee footer ─────────────────────────── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-outer {
+  overflow: hidden;
+  cursor: pointer;
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 /* ─── Responsive ──────────────────────────────── */
 @media (max-width: 900px) {
   html, body { overflow: auto; }

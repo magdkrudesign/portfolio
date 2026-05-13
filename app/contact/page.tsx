@@ -44,7 +44,7 @@ export default function ContactPage() {
         {/* MIDDLE COLUMN */}
         <div
           className="col-middle"
-          style={{ paddingBottom: "120px", minHeight: "100vh" }}
+          style={{ paddingBottom: "120px" }}
         >
           {/* Title */}
           <div style={{ marginBottom: "40px" }}>

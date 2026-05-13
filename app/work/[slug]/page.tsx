@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { projects, getProjectBySlug, getCategoryLabel } from "@/lib/data";
+import { projects, getProjectBySlug } from "@/lib/data";
 import type { Metadata } from "next";
 
 type Props = { params: { slug: string } };
@@ -170,14 +170,6 @@ export default function ProjectPage({ params }: Props) {
             />
           </div>
 
-          {/* Categories */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-            {project.categories.map((cat) => (
-              <span key={cat} className="text-12" style={{ color: "var(--color-gray)" }}>
-                {getCategoryLabel(cat)}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </main>
