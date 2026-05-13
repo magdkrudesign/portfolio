@@ -57,14 +57,15 @@ export default function HomePage() {
         {/* ── MIDDLE ── scrolls independently */}
         <div className="col-middle">
 
-          {/* Sticky description — top: var(--col-pad-top) so it locks at 140px from viewport */}
+          {/* Sticky description — subtitle + invisible spacer + "Selected work" header
+              all inside one sticky container, matching Framer's Description node exactly */}
           <div style={{
             position: "sticky",
             top: "var(--col-pad-top)",
             zIndex: 1,
             backgroundColor: "var(--color-white)",
-            paddingBottom: 8,
           }}>
+            {/* Subtitle — /16 medium: 16px / 1.4em / -0.03em / Geist 500 */}
             <p className="text-16" style={{ maxWidth: 600 }}>
               Senior UX/UI &amp; Brand Designer blending strategy, story, and
               systems into brands and digital products{" "}
@@ -72,20 +73,21 @@ export default function HomePage() {
                 that are clear, memorable, and built to last.
               </span>
             </p>
-          </div>
 
-          {/* 30 vh spacer (matches Framer's invisible spacer) */}
-          <div style={{ height: "30vh", flexShrink: 0 }} />
+            {/* Invisible 30vh spacer — creates gap so "Selected work" sits lower */}
+            <div style={{ height: "30vh", flexShrink: 0 }} />
 
-          {/* Selected work header */}
-          <div style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "baseline",
-            paddingBottom: 8,
-          }}>
-            <span className="text-14" style={{ color: "var(--color-gray)" }}>Selected work</span>
-            <span className="text-14" style={{ color: "var(--color-gray)" }}>({projects.length})</span>
+            {/* Selected work header */}
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              paddingBottom: 8,
+              backgroundColor: "var(--color-white)",
+            }}>
+              <span className="text-14" style={{ color: "var(--color-gray)" }}>Selected work</span>
+              <span className="text-14" style={{ color: "var(--color-gray)" }}>({projects.length})</span>
+            </div>
           </div>
 
           {/* Project cards — full-width, stacked, 20 px gap (matches Framer Works gap) */}
