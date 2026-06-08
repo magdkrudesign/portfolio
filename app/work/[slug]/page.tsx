@@ -127,26 +127,28 @@ export default function ProjectPage({ params }: Props) {
   return (
     <PageLayout left={leftCol} right={rightCol}>
 
-      {/* Sticky description — Heading 2 (26px / 1.1em / -0.04em / 500) */}
-      <div
-        style={{
-          position: "sticky",
-          top: "var(--col-pad-top)",
-          zIndex: 1,
-          backgroundColor: "var(--color-white)",
-          paddingBottom: 8,
-        }}
-      >
-        <p className="text-heading2" style={{ maxWidth: 600, marginBottom: 8 }}>
-          {project.overview}
-        </p>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <a href={project.previewLink} target="_blank" rel="noopener noreferrer"
-            className="text-14" style={{ color: "var(--color-gray)", textDecoration: "none" }}>
-            {project.buttonText} ↗
-          </a>
-          <span className="text-12" style={{ color: "var(--color-gray)" }}>© {project.client}</span>
-        </div>
+      {/* 1. Description heading — 26px / 1.1em / -0.04em / weight 500 */}
+      <p className="text-heading2" style={{ maxWidth: 600 }}>
+        {project.overview}
+      </p>
+
+      {/* 2. 30vh spacer */}
+      <div style={{ height: "30vh" }} />
+
+      {/* 3. Border-top row: "Live website ↗" left + "© Client" right */}
+      <div style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderTop: "1px solid rgb(230,230,230)",
+        paddingTop: 8,
+        paddingBottom: 12,
+      }}>
+        <a href={project.previewLink} target="_blank" rel="noopener noreferrer"
+          className="text-14" style={{ color: "var(--color-gray)", textDecoration: "none" }}>
+          {project.buttonText} ↗
+        </a>
+        <span className="text-12" style={{ color: "var(--color-gray)" }}>© {project.client}</span>
       </div>
 
       {/* Gallery — 12px gap */}
