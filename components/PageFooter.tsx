@@ -7,8 +7,8 @@ const HALF = SEGMENT.repeat(4);
 export default function PageFooter() {
   return (
     <div style={{ marginTop: 80 }}>
-      {/* 30vh before marquee */}
-      <div style={{ height: "30vh" }} />
+      {/* 20vh before marquee */}
+      <div style={{ height: "20vh" }} />
 
       {/* ── Marquee ── 80px Geist 500, white bg, black text, loops left ── */}
       <Link href="/contact" style={{ display: "block", textDecoration: "none" }}>
