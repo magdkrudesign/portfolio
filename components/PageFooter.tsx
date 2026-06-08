@@ -42,8 +42,8 @@ export default function PageFooter() {
         </div>
       </Link>
 
-      {/* 30vh after marquee, before footer */}
-      <div style={{ height: "30vh" }} />
+      {/* 10vh after marquee, before footer */}
+      <div style={{ height: "10vh" }} />
 
       {/* ── Footer row ── */}
       <div
