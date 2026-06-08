@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import PageLayout from "@/components/PageLayout";
 
 export const metadata: Metadata = {
   title: "Info — Magdalena Kruk",
@@ -68,30 +69,49 @@ const notableProjects = [
   { name: "Callstack Brandbook", detail: "Visual Identity System", year: "'24" },
 ];
 
+const leftCol = (
+  <>
+    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src="https://framerusercontent.com/images/ML35xR4TDNdu1vOfg8Wm81Uq9I.jpg"
+        alt="Magdalena Kruk"
+        style={{ width: "60%", aspectRatio: "3/4", objectFit: "cover", display: "block" }} />
+      <span className="text-12" style={{ color: "var(--color-gray)" }}>© 2026</span>
+    </div>
+    <h1 className="text-heading1">About Me.</h1>
+  </>
+);
+
+const rightCol = (
+  <>
+    <div style={{ display: "flex", flexDirection: "column" }}>
+      {stats.map((stat) => (
+        <div key={stat.label} className="meta-row">
+          <span className="meta-label">{stat.label}</span>
+          <span className="meta-value" style={{ textAlign: "right" }}>{stat.value}</span>
+        </div>
+      ))}
+    </div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      <span className="text-12" style={{ color: "var(--color-gray)" }}>Projects</span>
+      <div className="divider" />
+      {notableProjects.map((p) => (
+        <div key={p.name} style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+            <span className="text-12" style={{ fontWeight: 500 }}>{p.name}</span>
+            <span className="text-12" style={{ color: "var(--color-gray)" }}>{p.detail}</span>
+          </div>
+          <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>{p.year}</span>
+        </div>
+      ))}
+    </div>
+  </>
+);
+
 export default function AboutPage() {
   return (
-    <main>
-      <div className="three-col">
-
-        {/* ── LEFT COLUMN ── */}
-        <div className="col-left">
-          {/* Photo */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://framerusercontent.com/images/ML35xR4TDNdu1vOfg8Wm81Uq9I.jpg"
-              alt="Magdalena Kruk"
-              style={{ width: "60%", aspectRatio: "3/4", objectFit: "cover", display: "block" }}
-            />
-            <span className="text-12" style={{ color: "var(--color-gray)" }}>© 2026</span>
-          </div>
-
-          {/* Title */}
-          <h1 className="text-heading1">About Me.</h1>
-        </div>
-
-        {/* ── MIDDLE COLUMN ── */}
-        <div className="col-middle" style={{ paddingBottom: "120px" }}>
+    <PageLayout left={leftCol} right={rightCol}>
+      <div style={{ paddingBottom: 120 }}>
 
           {/* Bio */}
           <div style={{ marginBottom: "80px", display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -165,69 +185,19 @@ export default function AboutPage() {
             <h2 className="text-heading2" style={{ marginBottom: "16px" }}>Experience</h2>
             <div className="divider" />
             {experience.map((job) => (
-              <div
-                key={job.title}
-                style={{
-                  padding: "20px 0",
-                  borderBottom: "1px solid var(--color-light-gray)",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "8px",
-                }}
-              >
+              <div key={job.title} style={{ padding: "20px 0", borderBottom: "1px solid var(--color-light-gray)", display: "flex", flexDirection: "column", gap: "8px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", gap: "16px" }}>
                   <div>
                     <h3 className="text-heading3">{job.title}</h3>
                     <span className="text-14" style={{ color: "var(--color-gray)" }}>{job.company}</span>
                   </div>
-                  <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
-                    {job.period}
-                  </span>
+                  <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>{job.period}</span>
                 </div>
-                <p className="text-14" style={{ color: "var(--color-gray)", maxWidth: "520px" }}>
-                  {job.description}
-                </p>
+                <p className="text-14" style={{ color: "var(--color-gray)", maxWidth: "520px" }}>{job.description}</p>
               </div>
             ))}
           </section>
         </div>
-
-        {/* ── RIGHT COLUMN ── */}
-        <div className="col-right">
-          {/* Stats */}
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {stats.map((stat) => (
-              <div key={stat.label} className="meta-row">
-                <span className="meta-label">{stat.label}</span>
-                <span className="meta-value">{stat.value}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Notable projects */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <span className="text-12" style={{ color: "var(--color-gray)" }}>Projects</span>
-            <div className="divider" />
-            {notableProjects.map((p) => (
-              <div
-                key={p.name}
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "flex-start",
-                  gap: "8px",
-                }}
-              >
-                <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
-                  <span className="text-12" style={{ fontWeight: 500 }}>{p.name}</span>
-                  <span className="text-12" style={{ color: "var(--color-gray)" }}>{p.detail}</span>
-                </div>
-                <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>{p.year}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </main>
+    </PageLayout>
   );
 }

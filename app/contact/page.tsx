@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Metadata } from "next";
+import PageLayout from "@/components/PageLayout";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -36,16 +37,8 @@ export default function ContactPage() {
   }
 
   return (
-    <main>
-      <div className="three-col">
-        {/* LEFT — empty */}
-        <div className="col-left" />
-
-        {/* MIDDLE COLUMN */}
-        <div
-          className="col-middle"
-          style={{ paddingBottom: "120px" }}
-        >
+    <PageLayout>
+      <div style={{ paddingBottom: 120 }}>
           {/* Title */}
           <div style={{ marginBottom: "40px" }}>
             <h1
@@ -185,9 +178,6 @@ export default function ContactPage() {
           )}
         </div>
 
-        {/* RIGHT — empty */}
-        <div className="col-right" />
-      </div>
-    </main>
+    </PageLayout>
   );
 }

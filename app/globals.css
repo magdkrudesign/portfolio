@@ -7,8 +7,7 @@
   --color-black: rgb(18, 18, 18);
   --color-light-gray: rgb(230, 230, 230);
   --color-gray: rgb(117, 117, 117);
-  --nav-h: 44px;
-  /* Internal top padding — columns start at top:var(--nav-h), so 44+96=140px from viewport */
+  --nav-h: 45px;
   --col-pad-top: 96px;
   --col-pad-bot: 24px;
 }
@@ -16,31 +15,28 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
+  overflow: hidden;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
   background: var(--color-white);
   color: var(--color-black);
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── Main shell ─────────────────────────────── */
-main {
-  /* no special height/overflow needed — fixed columns handle everything */
-}
-
-/* ─── 3-column layout — all position:fixed ───── */
-.three-col {
-  position: relative;
-}
-
-/* Left: fixed, never scrolls — starts below nav */
-.col-left {
+/* ─── Shared page layout — fixed grid below nav ─ */
+.page-layout {
   position: fixed;
-  left: 0;
   top: var(--nav-h);
-  width: 25%;
-  height: calc(100vh - var(--nav-h));
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  grid-template-columns: 25vw 50vw 25vw;
+}
+
+.col-left {
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -49,16 +45,8 @@ main {
   border-right: 1px solid rgb(230, 230, 230);
 }
 
-/* Middle: sole scrolling region.
-   Starts at top:nav-h so content clips exactly at the nav's bottom edge —
-   subtitle and any content scrolled past the top disappears under the nav bar.
-   overflow:hidden sets the outer clip; overflow-y:scroll enables the inner scroll. */
+/* Middle: outer clip + inner scroll — content clipped at nav boundary */
 .col-middle {
-  position: fixed;
-  left: 25%;
-  top: var(--nav-h);
-  width: 50%;
-  height: calc(100vh - var(--nav-h));
   overflow: hidden;
   overflow-y: scroll;
   padding: var(--col-pad-top) 16px 0 16px;
@@ -67,13 +55,7 @@ main {
 }
 .col-middle::-webkit-scrollbar { display: none; }
 
-/* Right: fixed, never scrolls — starts below nav */
 .col-right {
-  position: fixed;
-  right: 0;
-  top: var(--nav-h);
-  width: 25%;
-  height: calc(100vh - var(--nav-h));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -179,16 +161,24 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
-  padding: 8px 0;
+  gap: 8px;
+  padding: 6px 0;
   border-bottom: 1px solid var(--color-light-gray);
+}
+.meta-row:first-child { border-top: 1px solid var(--color-light-gray); }
+.meta-label {
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.03em;
+  color: var(--color-gray);
+  flex-shrink: 0;
 }
-.meta-row:first-child { border-top: 1px solid var(--color-light-gray); }
-.meta-label { color: var(--color-gray); flex-shrink: 0; }
-.meta-value { text-align: right; }
+.meta-value {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  flex: 1;
+}
 
 /* ─── Buttons ─────────────────────────────────── */
 .btn-primary {
@@ -229,7 +219,12 @@ main {
 
 /* ─── Form ────────────────────────────────────── */
 .form-field { display: flex; flex-direction: column; gap: 8px; }
-.form-label { font-size: 14px; font-weight: 500; letter-spacing: -0.03em; color: var(--color-gray); }
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--color-gray);
+}
 .form-input {
   width: 100%;
   padding: 12px 0;
@@ -252,45 +247,38 @@ main {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-.marquee-outer {
-  overflow: hidden;
-  cursor: pointer;
-}
+.marquee-outer { overflow: hidden; cursor: pointer; }
 .marquee-track {
   display: flex;
   white-space: nowrap;
   width: max-content;
   animation: marquee 35s linear infinite;
 }
-.marquee-track:hover {
-  animation-play-state: paused;
-}
+.marquee-track:hover { animation-play-state: paused; }
 
 /* ─── Responsive ──────────────────────────────── */
 @media (max-width: 900px) {
   html, body { height: auto; width: auto; overflow: auto; }
 
-  .three-col {
+  .page-layout {
+    position: relative;
+    top: var(--nav-h);
     display: flex;
     flex-direction: column;
+    grid-template-columns: none;
   }
 
-  /* Undo fixed positioning */
   .col-left, .col-middle, .col-right {
-    position: relative;
-    left: auto; right: auto; top: auto;
     width: 100%;
     height: auto;
     overflow: visible;
     border: none;
+    padding: 32px 20px 20px;
   }
   .col-left, .col-right {
-    padding: 32px 20px 20px 20px;
     border-bottom: 1px solid var(--color-light-gray);
   }
-  .col-middle {
-    overflow-y: visible;
-    padding: 32px 20px;
-  }
+  .col-middle { overflow-y: visible; }
+
   .text-heading1 { font-size: 36px; }
 }

@@ -16,6 +16,7 @@ export type Project = {
   title2: string;
   paragraph2: string;
   gallery: string[];
+  featuredIn?: { label: string; url: string }[];
 };
 
 export type Category = {
@@ -57,6 +58,10 @@ export const projects: Project[] = [
       "https://framerusercontent.com/images/LYjPMGCeUFPb5mSE23UQuv8rBo.webp",
       "https://framerusercontent.com/images/iG5PUN3ni4gO6Q2hjfKcEQn91xk.webp",
       "https://framerusercontent.com/images/CKnUeanHdZ7kmQvqQtDpNOTAy8.webp",
+    ],
+    featuredIn: [
+      { label: "Watch on YouTube", url: "https://www.youtube.com/@callstack" },
+      { label: "Latest on Behance", url: "https://www.behance.net/magdalenakruk" },
     ],
   },
   {
