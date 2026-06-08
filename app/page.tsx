@@ -97,8 +97,8 @@ export default function HomePage() {
         </span>
       </p>
 
-      {/* ~30vh spacer — subtitle visible on load, "Selected work" appears after scrolling */}
-      <div style={{ height: "30vh", flexShrink: 0 }} />
+      {/* Place 3: 30vh empty space above "Selected work" */}
+      <div style={{ height: "30vh" }} />
 
       {/* Selected work header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline",
