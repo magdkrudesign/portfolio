@@ -77,6 +77,10 @@ export default function HomePage() {
             </span>
           </p>
 
+          {/* ~30vh spacer — pushes "Selected work" below the initial viewport,
+              matching the Framer layout where it scrolls into view */}
+          <div style={{ height: "30vh", flexShrink: 0 }} />
+
           {/* Selected work header + thin separator */}
           <div
             style={{

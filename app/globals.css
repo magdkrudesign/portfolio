@@ -8,8 +8,8 @@
   --color-light-gray: rgb(230, 230, 230);
   --color-gray: rgb(117, 117, 117);
   --nav-h: 44px;
-  /* Full padding-top from column edge (columns start at top:0, nav overlays 44px) */
-  --col-pad-top: 140px;
+  /* Internal top padding — columns start at top:var(--nav-h), so 44+96=140px from viewport */
+  --col-pad-top: 96px;
   --col-pad-bot: 24px;
 }
 
@@ -34,13 +34,13 @@ main {
   position: relative;
 }
 
-/* Left: fixed, never scrolls */
+/* Left: fixed, never scrolls — starts below nav */
 .col-left {
   position: fixed;
   left: 0;
-  top: 0;
+  top: var(--nav-h);
   width: 25%;
-  height: 100vh;
+  height: calc(100vh - var(--nav-h));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -49,13 +49,17 @@ main {
   border-right: 1px solid rgb(230, 230, 230);
 }
 
-/* Middle: ONLY scrolling region */
+/* Middle: sole scrolling region.
+   Starts at top:nav-h so content clips exactly at the nav's bottom edge —
+   subtitle and any content scrolled past the top disappears under the nav bar.
+   overflow:hidden sets the outer clip; overflow-y:scroll enables the inner scroll. */
 .col-middle {
   position: fixed;
   left: 25%;
-  top: 0;
+  top: var(--nav-h);
   width: 50%;
-  height: 100vh;
+  height: calc(100vh - var(--nav-h));
+  overflow: hidden;
   overflow-y: scroll;
   padding: var(--col-pad-top) 16px 0 16px;
   scrollbar-width: none;
@@ -63,13 +67,13 @@ main {
 }
 .col-middle::-webkit-scrollbar { display: none; }
 
-/* Right: fixed, never scrolls */
+/* Right: fixed, never scrolls — starts below nav */
 .col-right {
   position: fixed;
   right: 0;
-  top: 0;
+  top: var(--nav-h);
   width: 25%;
-  height: 100vh;
+  height: calc(100vh - var(--nav-h));
   overflow: hidden;
   display: flex;
   flex-direction: column;
