@@ -7,9 +7,6 @@ const HALF = SEGMENT.repeat(4);
 export default function PageFooter() {
   return (
     <div style={{ marginTop: 80 }}>
-      {/* Place 1: 30vh empty space above marquee */}
-      <div style={{ height: "30vh" }} />
-
       {/* ── Marquee ── 80px Geist 500, white bg, black text, loops left ── */}
       <Link href="/contact" style={{ display: "block", textDecoration: "none" }}>
         <div className="marquee-outer" style={{ paddingBottom: 8 }}>
@@ -42,10 +39,7 @@ export default function PageFooter() {
         </div>
       </Link>
 
-      {/* Place 2: 30vh empty space above footer */}
-      <div style={{ height: "30vh" }} />
-
-      {/* ── Footer row ── inside middle column, very bottom of scroll ── */}
+      {/* ── Footer row ── immediately below marquee, no spacer ── */}
       <div
         style={{
           display: "flex",

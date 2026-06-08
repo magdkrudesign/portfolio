@@ -128,6 +128,8 @@ export default function HomePage() {
         ))}
       </div>
 
+      {/* 30vh gap before marquee — home page only, matches magdalenakruk.pl spacing */}
+      <div style={{ height: "30vh" }} />
       <PageFooter />
     </PageLayout>
   );
