@@ -4,14 +4,20 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
-  title: "Magdalena Kruk — Senior Brand & Product Designer",
+  title: "Magdalena Kruk - Brand and Product Designer",
   description:
-    "Senior UX/UI & Brand Designer blending strategy, story, and systems into brands and digital products that are clear, memorable, and built to last.",
+    "Brand and product designer crafting identities and digital experiences that are clear, intentional, and built to last.",
   openGraph: {
-    title: "Magdalena Kruk — Senior Brand & Product Designer",
-    description: "Senior UX/UI & Brand Designer based in Wrocław, Poland.",
-    url: "https://magdalenakruk.framer.website",
+    title: "Magdalena Kruk - Brand and Product Designer",
+    description:
+      "Brand and product designer crafting identities and digital experiences that are clear, intentional, and built to last.",
+    url: "https://magdalenakruk.pl",
     siteName: "Magdalena Kruk",
+    images: [
+      {
+        url: "https://framerusercontent.com/assets/5mvEsHDyHtfL4TzfEY17O72YCVY.png",
+      },
+    ],
   },
 };
 

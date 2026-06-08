@@ -77,20 +77,22 @@ export default function HomePage() {
             </span>
           </p>
 
-          {/* Selected work header */}
+          {/* Selected work header + thin separator */}
           <div
             style={{
               display: "flex",
               justifyContent: "space-between",
               alignItems: "baseline",
               paddingBottom: 8,
+              borderBottom: "1px solid rgb(230,230,230)",
+              marginBottom: 12,
             }}
           >
             <span className="text-14" style={{ color: "var(--color-gray)" }}>Selected work</span>
             <span className="text-14" style={{ color: "var(--color-gray)" }}>({projects.length})</span>
           </div>
 
-          {/* Project cards — full-width, 20px gap, matches Framer Works gap */}
+          {/* Project cards — full-width, 20px gap */}
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {projects.map((project) => (
               <Link key={project.slug} href={`/work/${project.slug}`} className="project-card">
