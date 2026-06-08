@@ -72,7 +72,7 @@ export default function Navigation() {
                 color: isActive ? "var(--color-black)" : "var(--color-gray)",
               }}
             >
-              {link.label}{isLast ? "" : ","}
+              {link.label}
             </Link>
           );
         })}
