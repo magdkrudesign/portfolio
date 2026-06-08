@@ -12,7 +12,7 @@ export default function PageFooter() {
 
       {/* ── Marquee ── 80px Geist 500, white bg, black text, loops left ── */}
       <Link href="/contact" style={{ display: "block", textDecoration: "none" }}>
-        <div className="marquee-outer" style={{ paddingBottom: 8 }}>
+        <div className="marquee-outer" style={{ paddingBottom: 8, width: "100%" }}>
           <div className="marquee-track">
             <span
               style={{

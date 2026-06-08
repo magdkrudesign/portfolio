@@ -247,7 +247,7 @@ html, body {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-.marquee-outer { overflow: hidden; cursor: pointer; }
+.marquee-outer { position: relative; overflow: hidden; cursor: pointer; }
 .marquee-track {
   display: flex;
   white-space: nowrap;
