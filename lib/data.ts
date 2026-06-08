@@ -16,7 +16,10 @@ export type Project = {
   title2: string;
   paragraph2: string;
   gallery: string[];
-  featuredIn?: { label: string; url: string }[];
+  featuredIn?: {
+    description: string;
+    links: { icon: string; label: string; url: string }[];
+  }[];
 };
 
 export type Category = {
@@ -60,8 +63,13 @@ export const projects: Project[] = [
       "https://framerusercontent.com/images/CKnUeanHdZ7kmQvqQtDpNOTAy8.webp",
     ],
     featuredIn: [
-      { label: "Watch on YouTube", url: "https://www.youtube.com/@callstack" },
-      { label: "Latest on Behance", url: "https://www.behance.net/magdalenakruk" },
+      {
+        description: "I joined the B2B Besties podcast to talk through the Callstack rebrand — design process, brand strategy, and building a cohesive visual identity.",
+        links: [
+          { icon: "▶", label: "Watch on YouTube", url: "https://youtu.be/Yuq0j_saaEs?si=9ZsoQBn4fgZbC1Ji" },
+          { icon: "🎧", label: "Listen on Spotify", url: "https://open.spotify.com/episode/5QkHTKmkEuhVDrSRaDI5Xh?si=2f3cc74ecd4b4b36" },
+        ],
+      },
     ],
   },
   {

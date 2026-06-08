@@ -92,22 +92,25 @@ export default function ProjectPage({ params }: Props) {
         </div>
 
         {/* Featured in — Callstack only */}
-        {project.featuredIn && project.featuredIn.length > 0 && (
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            {project.featuredIn.map((item) => (
+        {project.featuredIn && project.featuredIn.map((entry, i) => (
+          <div key={i} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <p className="text-14" style={{ color: "var(--color-gray)", lineHeight: "1.6em" }}>
+              {entry.description}
+            </p>
+            {entry.links.map((link) => (
               <a
-                key={item.label}
-                href={item.url}
+                key={link.label}
+                href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-14"
-                style={{ color: "var(--color-gray)", textDecoration: "none" }}
+                style={{ color: "var(--color-black)", textDecoration: "none" }}
               >
-                → {item.label}
+                {link.icon} {link.label}
               </a>
             ))}
           </div>
-        )}
+        ))}
       </div>
 
       {/* Bottom: Next project */}
