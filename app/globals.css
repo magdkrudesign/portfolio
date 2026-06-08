@@ -45,10 +45,10 @@ html, body {
   border-right: 1px solid rgb(230, 230, 230);
 }
 
-/* Middle: outer clip + inner scroll — content clipped at nav boundary */
+/* Middle: scroll region — overflow-x:clip avoids breaking position:sticky */
 .col-middle {
-  overflow: hidden;
   overflow-y: scroll;
+  overflow-x: clip;
   padding: var(--col-pad-top) 16px 0 16px;
   scrollbar-width: none;
   -ms-overflow-style: none;

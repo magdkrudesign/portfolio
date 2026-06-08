@@ -18,10 +18,6 @@ export default function WorkPage() {
       {/* ── Header row: "My Work." left + filters right ── */}
       <div
         style={{
-          position: "sticky",
-          top: 0,
-          backgroundColor: "var(--color-white)",
-          zIndex: 1,
           display: "flex",
           justifyContent: "space-between",
           alignItems: "flex-start",
