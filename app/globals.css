@@ -5,18 +5,18 @@
 :root {
   --color-white: rgb(255, 255, 255);
   --color-black: rgb(18, 18, 18);
-  --color-light-gray: rgb(227, 227, 227);
+  --color-light-gray: rgb(230, 230, 230);
   --color-gray: rgb(117, 117, 117);
   --nav-h: 44px;
-  --col-pad-top: 96px;   /* 44 nav + 96 = 140px from viewport top — matches Framer */
+  --col-pad-top: 96px;   /* 44 nav + 96 = 140px from viewport top */
   --col-pad-bot: 24px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
-  height: 100%;
-  overflow: hidden;           /* outer page never scrolls */
+  height: 100vh;
+  overflow: hidden;
   background: var(--color-white);
   color: var(--color-black);
   -webkit-font-smoothing: antialiased;
@@ -24,57 +24,56 @@ html, body {
 
 /* ─── Main shell ─────────────────────────────── */
 main {
-  padding-top: var(--nav-h);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  padding-top: var(--nav-h);  /* reserve space for fixed nav */
 }
 
-/* ─── 3-column layout ────────────────────────── */
+/* ─── 3-column layout — all cols position:fixed ─ */
 .three-col {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  overflow: hidden;
-  gap: 32px;
-  padding: 0 20px;
+  position: relative;
 }
 
+/* Left: fixed, never scrolls */
 .col-left {
+  position: fixed;
+  left: 0;
+  top: var(--nav-h);
   width: 25%;
-  flex-shrink: 0;
-  height: 100%;
+  height: calc(100vh - var(--nav-h));
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: var(--col-pad-top) 0 var(--col-pad-bot) 0;
-  overflow: hidden;
+  padding: var(--col-pad-top) 16px var(--col-pad-bot) 20px;
 }
 
-/* Middle column is the ONLY scroll region */
+/* Middle: ONLY scrolling region */
 .col-middle {
-  flex: 1;
-  height: 100%;
-  overflow-y: auto;
-  border-left: 1px solid var(--color-light-gray);
-  border-right: 1px solid var(--color-light-gray);
+  position: fixed;
+  left: 25%;
+  top: var(--nav-h);
+  width: 50%;
+  height: calc(100vh - var(--nav-h));
+  overflow-y: scroll;
+  border-left: 1px solid rgb(230, 230, 230);
   padding: var(--col-pad-top) 16px 0 16px;
-  /* hide scrollbar — clean like Framer's smooth scroll */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 .col-middle::-webkit-scrollbar { display: none; }
 
+/* Right: fixed, never scrolls */
 .col-right {
+  position: fixed;
+  right: 0;
+  top: var(--nav-h);
   width: 25%;
-  flex-shrink: 0;
-  height: 100%;
+  height: calc(100vh - var(--nav-h));
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: var(--col-pad-top) 0 var(--col-pad-bot) 0;
-  overflow: hidden;
+  padding: var(--col-pad-top) 20px var(--col-pad-bot) 16px;
+  border-left: 1px solid rgb(230, 230, 230);
 }
 
 /* ─── Typography ─────────────────────────────── */
@@ -263,29 +262,32 @@ main {
 
 /* ─── Responsive ──────────────────────────────── */
 @media (max-width: 900px) {
-  html, body { overflow: auto; }
-  main { height: auto; overflow: visible; padding-top: var(--nav-h); }
+  html, body { height: auto; overflow: auto; }
+  main { height: auto; }
 
   .three-col {
+    display: flex;
     flex-direction: column;
+  }
+
+  /* Undo fixed positioning */
+  .col-left, .col-middle, .col-right {
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto;
+    width: 100%;
     height: auto;
     overflow: visible;
-    gap: 0;
-    padding: 0;
   }
   .col-left, .col-right {
-    width: 100%;
-    height: auto;
     padding: 32px 20px 20px 20px;
+    border: none;
     border-bottom: 1px solid var(--color-light-gray);
-    overflow: visible;
   }
   .col-middle {
-    width: 100%;
-    height: auto;
     overflow-y: visible;
     border-left: none;
-    border-right: none;
     padding: 32px 20px;
   }
   .text-heading1 { font-size: 36px; }
