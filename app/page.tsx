@@ -68,7 +68,7 @@ function RightCol() {
       </div>
 
       {/* Bottom: contact */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 4, paddingTop: 24 }}>
         <a href="mailto:magdalena.kruk.design@gmail.com" className="text-14"
           style={{ textDecoration: "none", color: "var(--color-black)" }}>
           magdalena.kruk.design@gmail.com

@@ -109,7 +109,7 @@ const rightCol = (
 export default function AboutPage() {
   return (
     <PageLayout left={leftCol} right={rightCol}>
-      <div style={{ paddingBottom: 120 }}>
+      <div className="page-content-pad">
 
           {/* Bio */}
           <div style={{ marginBottom: "80px", display: "flex", flexDirection: "column", gap: "24px" }}>

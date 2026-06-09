@@ -29,7 +29,7 @@ export default function ProjectPage({ params }: Props) {
 
   /* ── Left column ── title · thumbnail · category · meta ── */
   const leftCol = (
-    <>
+    <div className="case-left-inner">
       {/* Top: project title */}
       <h1 className="text-heading1">{project.title}</h1>
 
@@ -73,7 +73,7 @@ export default function ProjectPage({ params }: Props) {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 
   /* ── Right column ── role · outcome · featured in · next ── */
