@@ -129,7 +129,7 @@ export default function ProjectPage({ params }: Props) {
   );
 
   return (
-    <PageLayout left={leftCol} right={rightCol}>
+    <PageLayout left={leftCol} right={rightCol} caseStudy>
 
       {/* 1. Description heading — 26px / 1.1em / -0.04em / weight 500 */}
       <p className="text-heading2" style={{ maxWidth: 600 }}>

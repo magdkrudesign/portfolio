@@ -10,12 +10,12 @@ const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Des
 /* ── Left column content ─────────────────────── */
 function LeftCol() {
   return (
-    <>
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       <h1 className="text-heading1">
         Hello! I&apos;m Magdalena.
       </h1>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <div style={{ display: "flex", flexDirection: "row", gap: 8 }}>
         {/* LinkedIn */}
         <a href="https://www.linkedin.com/in/magdalenakruk/" target="_blank" rel="noopener noreferrer"
           aria-label="LinkedIn" style={{ display: "inline-block", width: 18, height: 18 }}>
@@ -40,7 +40,7 @@ function LeftCol() {
           <div key={s} className="service-tag">{s}</div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
