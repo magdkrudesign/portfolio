@@ -26,7 +26,7 @@ function LeftCol() {
           </svg>
         </a>
         {/* YouTube */}
-        <a href="https://www.youtube.com/@magdalenakruk" target="_blank" rel="noopener noreferrer"
+        <a href="https://www.youtube.com/watch?v=Yuq0j_saaEs" target="_blank" rel="noopener noreferrer"
           aria-label="YouTube" style={{ display: "inline-block", width: 18, height: 18 }}>
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
             <rect x=".5" y=".5" width="17" height="17" rx="1.5" stroke="rgb(18,18,18)"/>

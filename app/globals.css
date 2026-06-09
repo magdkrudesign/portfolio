@@ -367,6 +367,9 @@ html, body {
   .page-layout--case .col-right  { order: 2; }
   .page-layout--case .col-middle { order: 3; }
 
+  /* No border between left col (meta) and right col (My Role) on case study */
+  .page-layout--case .col-left { border-bottom: none; }
+
   .text-heading1 { font-size: 32px; }
   .text-heading2 { font-size: 20px; }
 

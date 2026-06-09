@@ -66,7 +66,7 @@ export const projects: Project[] = [
       {
         description: "I joined the B2B Besties podcast to talk through the Callstack rebrand — design process, brand strategy, and building a cohesive visual identity.",
         links: [
-          { icon: "▶", label: "Watch on YouTube", url: "https://youtu.be/Yuq0j_saaEs?si=9ZsoQBn4fgZbC1Ji" },
+          { icon: "▶", label: "Watch on YouTube", url: "https://www.youtube.com/watch?v=Yuq0j_saaEs" },
           { icon: "🎧", label: "Listen on Spotify", url: "https://open.spotify.com/episode/5QkHTKmkEuhVDrSRaDI5Xh?si=2f3cc74ecd4b4b36" },
         ],
       },
