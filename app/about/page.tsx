@@ -71,13 +71,13 @@ const notableProjects = [
 
 const leftCol = (
   <>
+    <h1 className="text-heading1">About Me.</h1>
     <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src="https://framerusercontent.com/images/kvZUjM81xHq7MPsioY0TAcK0ipU.jpg"
         alt="Magdalena Kruk"
         style={{ width: "60%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top", display: "block" }} />
     </div>
-    <h1 className="text-heading1">About Me.</h1>
   </>
 );
 

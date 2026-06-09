@@ -11,7 +11,7 @@ const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Des
 function LeftCol() {
   return (
     <>
-      <h1 className="text-heading1" style={{ maxWidth: 290 }}>
+      <h1 className="text-heading1">
         Hello! I&apos;m Magdalena.
       </h1>
 
@@ -50,7 +50,7 @@ function RightCol() {
     <>
       {/* Top: Available + photo side by side */}
       <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: "0 0 38%" }}>
           <div className="available-dot">Available for work</div>
         </div>
         <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 8 }}>
@@ -87,9 +87,8 @@ export default function HomePage() {
   return (
     <PageLayout left={<LeftCol />} right={<RightCol />}>
 
-      {/* Subtitle — 26px / 29px line-height / Geist 500 */}
-      <p style={{ fontSize: 26, lineHeight: "29px", fontWeight: 500, letterSpacing: "-0.04em",
-          maxWidth: 600, marginBottom: 0, color: "rgb(18,18,18)" }}>
+      {/* Subtitle */}
+      <p className="text-subtitle" style={{ maxWidth: 600, marginBottom: 0, color: "rgb(18,18,18)" }}>
         Senior UX/UI &amp; Brand Designer blending strategy, story, and
         systems into brands and digital products{" "}
         <span style={{ color: "rgb(153,153,153)" }}>
@@ -97,8 +96,8 @@ export default function HomePage() {
         </span>
       </p>
 
-      {/* Place 3: 30vh empty space above "Selected work" */}
-      <div style={{ height: "30vh" }} />
+      {/* Spacer above "Selected work" */}
+      <div className="spacer-work" />
 
       {/* Selected work header */}
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline",
@@ -120,7 +119,7 @@ export default function HomePage() {
                 {project.title}
                 <span style={{ color: "var(--color-gray)" }}> • {project.description}</span>
               </span>
-              <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap" }}>
+              <span className="text-12" style={{ color: "var(--color-gray)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", flexShrink: 0 }}>
                 {project.year}
               </span>
             </div>

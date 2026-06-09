@@ -6,13 +6,6 @@ interface PageLayoutProps {
   children: React.ReactNode;
 }
 
-/**
- * Shared 3-column layout used on every page.
- * - Left (25vw): fixed, never scrolls, border-right
- * - Middle (50vw): sole scroll region, overflow-y scroll
- * - Right (25vw): fixed, never scrolls, border-left
- * All columns sit in a fixed grid starting at top:nav-h.
- */
 export default function PageLayout({ left, right, children }: PageLayoutProps) {
   return (
     <main className="page-layout">

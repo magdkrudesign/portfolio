@@ -39,7 +39,8 @@ export default function ProjectPage({ params }: Props) {
         <img
           src={project.previewImage}
           alt={project.title}
-          style={{ width: "60%", aspectRatio: "4/3", objectFit: "cover", display: "block" }}
+          className="case-thumb"
+          style={{ aspectRatio: "4/3", objectFit: "cover", display: "block" }}
         />
         <span className="text-12" style={{ color: "var(--color-gray)" }}>{project.description}</span>
       </div>
@@ -113,8 +114,8 @@ export default function ProjectPage({ params }: Props) {
         ))}
       </div>
 
-      {/* Bottom: Next project */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      {/* Bottom: Next project — margin-top:auto pushes it to bottom on both desktop and mobile */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: "auto", paddingTop: 40 }}>
         <span className="text-12" style={{ color: "var(--color-gray)" }}>Next project</span>
         <Link
           href={`/work/${next.slug}`}
@@ -135,8 +136,8 @@ export default function ProjectPage({ params }: Props) {
         {project.overview}
       </p>
 
-      {/* 2. 30vh spacer */}
-      <div style={{ height: "30vh" }} />
+      {/* Spacer */}
+      <div className="spacer-work" />
 
       {/* 3. Border-top row: "Live website ↗" left + "© Client" right */}
       <div style={{
