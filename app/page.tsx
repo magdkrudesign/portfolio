@@ -85,7 +85,7 @@ function RightCol() {
 /* ── Page ────────────────────────────────────── */
 export default function HomePage() {
   return (
-    <PageLayout left={<LeftCol />} right={<RightCol />}>
+    <PageLayout left={<LeftCol />} right={<RightCol />} footer={<PageFooter />}>
 
       {/* Subtitle */}
       <p className="text-subtitle" style={{ maxWidth: 600, marginBottom: 0, color: "rgb(18,18,18)" }}>
@@ -127,7 +127,6 @@ export default function HomePage() {
         ))}
       </div>
 
-      <PageFooter />
     </PageLayout>
   );
 }

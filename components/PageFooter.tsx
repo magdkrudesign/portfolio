@@ -14,28 +14,10 @@ export default function PageFooter() {
       <Link href="/contact" style={{ display: "block", textDecoration: "none" }}>
         <div className="marquee-outer" style={{ paddingBottom: 8, width: "100%" }}>
           <div className="marquee-track">
-            <span
-              style={{
-                fontSize: 80,
-                fontWeight: 500,
-                letterSpacing: "-0.04em",
-                lineHeight: "1em",
-                color: "rgb(18,18,18)",
-                fontFamily: "inherit",
-              }}
-            >
+            <span className="marquee-text">
               {HALF}
             </span>
-            <span
-              style={{
-                fontSize: 80,
-                fontWeight: 500,
-                letterSpacing: "-0.04em",
-                lineHeight: "1em",
-                color: "rgb(18,18,18)",
-                fontFamily: "inherit",
-              }}
-            >
+            <span className="marquee-text">
               {HALF}
             </span>
           </div>
@@ -46,16 +28,7 @@ export default function PageFooter() {
       <div style={{ height: "10vh" }} />
 
       {/* ── Footer row ── */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          gap: 16,
-          padding: "16px 32px",
-          borderTop: "1px solid rgb(230,230,230)",
-        }}
-      >
+      <div className="footer-bar">
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <span className="text-14">Magdalena Kruk</span>
           <a

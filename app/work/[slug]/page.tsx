@@ -33,8 +33,9 @@ export default function ProjectPage({ params }: Props) {
       {/* Top: project title */}
       <h1 className="text-heading1">{project.title}</h1>
 
-      {/* Middle: thumbnail + category */}
+      {/* Middle: category + thumbnail */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <span className="text-12" style={{ color: "var(--color-gray)" }}>{project.description}</span>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.previewImage}
@@ -42,7 +43,6 @@ export default function ProjectPage({ params }: Props) {
           className="case-thumb"
           style={{ aspectRatio: "4/3", objectFit: "cover", display: "block" }}
         />
-        <span className="text-12" style={{ color: "var(--color-gray)" }}>{project.description}</span>
       </div>
 
       {/* Bottom: metadata — value LEFT (16px) · label RIGHT (14px gray) */}
@@ -129,7 +129,7 @@ export default function ProjectPage({ params }: Props) {
   );
 
   return (
-    <PageLayout left={leftCol} right={rightCol} caseStudy>
+    <PageLayout left={leftCol} right={rightCol} footer={<PageFooter />} caseStudy>
 
       {/* 1. Description heading — 26px / 1.1em / -0.04em / weight 500 */}
       <p className="text-heading2" style={{ maxWidth: 600 }}>
@@ -179,7 +179,6 @@ export default function ProjectPage({ params }: Props) {
         </Link>
       </div>
 
-      <PageFooter />
     </PageLayout>
   );
 }
