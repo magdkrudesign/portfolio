@@ -286,6 +286,9 @@ html, body {
 /* ─── Case study thumbnail ────────────────────── */
 .case-thumb { width: 60%; }
 
+/* ─── About page photo ────────────────────────── */
+.about-photo { width: 60%; }
+
 /* ─── Subtitle ────────────────────────────────── */
 .text-subtitle {
   font-size: 20px;
@@ -342,8 +345,11 @@ html, body {
 
   /* Default mobile order: left → middle → right (homepage) */
   .col-left   { order: 1; padding-top: 64px; border-bottom: 1px solid var(--color-light-gray); }
-  .col-middle { order: 2; overflow-y: visible; padding-top: 32px; }
+  .col-middle { order: 2; overflow-y: visible; padding-top: 64px; }
   .col-right  { order: 3; border-bottom: 1px solid var(--color-light-gray); }
+
+  /* Hide empty sidebar cols (e.g. contact page has no left/right) */
+  .col-left:empty, .col-right:empty { display: none; }
 
   /* Case study variant: left → right → middle */
   .page-layout--case .col-right  { order: 2; }
@@ -366,8 +372,9 @@ html, body {
     gap: 8px;
   }
 
-  /* Case study thumbnail: full width on mobile */
-  .case-thumb { width: 100%; }
+  /* Case study thumbnail + about photo: full width on mobile */
+  .case-thumb  { width: 100%; }
+  .about-photo { width: 80%; }
 
   /* Mobile: footer renders below grid, not inside col-middle */
   .footer-in-col    { display: none; }
