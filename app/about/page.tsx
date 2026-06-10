@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+import BlurWords from "@/components/BlurWords";
 
 export const metadata: Metadata = {
   title: "Info — Magdalena Kruk",
@@ -71,7 +72,7 @@ const notableProjects = [
 
 const leftCol = (
   <div className="left-col-inner">
-    <h1 className="text-heading1">About Me.</h1>
+    <BlurWords as="h1" text="About Me." className="text-heading1" delay={80} stagger={60} />
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img src="https://framerusercontent.com/images/kvZUjM81xHq7MPsioY0TAcK0ipU.jpg"
       alt="Magdalena Kruk"

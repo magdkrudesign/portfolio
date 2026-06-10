@@ -16,8 +16,8 @@ function LeftCol() {
         as="h1"
         text="Hello! I'm Magdalena."
         className="text-heading1"
-        delay={100}
-        stagger={80}
+        delay={80}
+        stagger={60}
       />
 
       <div style={{ display: "flex", flexDirection: "row", gap: 8 }}>
@@ -96,14 +96,14 @@ export default function HomePage() {
       <p className="text-subtitle" style={{ maxWidth: 600, marginBottom: 0 }}>
         <BlurWords
           text="Senior UX/UI & Brand Designer blending strategy, story, and systems into brands and digital products"
-          delay={200}
-          stagger={45}
+          delay={150}
+          stagger={35}
           style={{ color: "rgb(18,18,18)" }}
         />{" "}
         <BlurWords
           text="that are clear, memorable, and built to last."
-          delay={200 + 10 * 45}
-          stagger={45}
+          delay={150 + 10 * 35}
+          stagger={35}
           style={{ color: "rgb(153,153,153)" }}
         />
       </p>

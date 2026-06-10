@@ -3,6 +3,7 @@ import Link from "next/link";
 import { projects, getProjectBySlug } from "@/lib/data";
 import PageLayout from "@/components/PageLayout";
 import PageFooter from "@/components/PageFooter";
+import BlurWords from "@/components/BlurWords";
 import type { Metadata } from "next";
 
 type Props = { params: { slug: string } };
@@ -31,7 +32,7 @@ export default function ProjectPage({ params }: Props) {
   const leftCol = (
     <div className="case-left-inner">
       {/* Top: project title */}
-      <h1 className="text-heading1">{project.title}</h1>
+      <BlurWords as="h1" text={project.title} className="text-heading1" delay={80} stagger={60} />
 
       {/* Middle: category + thumbnail */}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>

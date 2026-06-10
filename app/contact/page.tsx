@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+import BlurWords from "@/components/BlurWords";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -41,12 +42,14 @@ export default function ContactPage() {
       <div style={{ paddingBottom: 120 }}>
           {/* Title */}
           <div style={{ marginBottom: "40px" }}>
-            <h1
+            <BlurWords
+              as="h1"
+              text="Reach out."
               className="text-heading1"
-              style={{ marginBottom: "16px" }}
-            >
-              Reach out.
-            </h1>
+              delay={80}
+              stagger={60}
+              style={{ marginBottom: "16px", display: "block" }}
+            />
             <p
               className="text-16"
               style={{ maxWidth: "520px", color: "var(--color-gray)" }}

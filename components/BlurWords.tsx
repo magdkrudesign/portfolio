@@ -38,7 +38,7 @@ export default function BlurWords({
             filter: "blur(10px)",
             transform: "translateY(8px)",
             willChange: "transform",
-            animation: `blurWordIn 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) both`,
+            animation: `blurWordIn 0.42s cubic-bezier(0.25, 0.46, 0.45, 0.94) both`,
             animationDelay: `${delay + i * stagger}ms`,
             marginRight: i < words.length - 1 ? "0.25em" : 0,
           }}
