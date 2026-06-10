@@ -132,9 +132,13 @@ export default function ProjectPage({ params }: Props) {
   return (
     <PageLayout left={leftCol} right={rightCol} footer={<PageFooter />} caseStudy>
 
-      {/* 1. Description heading — 26px / 1.1em / -0.04em / weight 500 */}
+      {/* 1. Description heading — word-by-word blur-in like homepage subtitle */}
       <p className="text-heading2" style={{ maxWidth: 600 }}>
-        {project.overview}
+        <BlurWords
+          text={project.overview}
+          delay={150}
+          stagger={35}
+        />
       </p>
 
       {/* Spacer */}
