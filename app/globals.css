@@ -283,8 +283,9 @@ html, body {
 .footer-in-col    { display: block; }
 .footer-below-grid { display: none; }
 
-/* ─── Case study left col inner wrapper ──────── */
+/* ─── Left col inner wrapper (all pages) ─────── */
 /* Desktop: mirrors col-left justify-content:space-between */
+.left-col-inner,
 .case-left-inner {
   height: 100%;
   display: flex;
@@ -391,11 +392,12 @@ html, body {
   .case-thumb  { width: 100%; }
   .about-photo { width: 80%; }
 
-  /* Case study left col: gap between title / image / meta on mobile */
+  /* Left col inner: gap on mobile for all pages */
+  .left-col-inner,
   .case-left-inner {
     height: auto;
     justify-content: flex-start;
-    gap: 32px;
+    gap: 24px;
   }
 
   /* Reduce bottom padding on mobile */

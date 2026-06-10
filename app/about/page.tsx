@@ -70,7 +70,7 @@ const notableProjects = [
 ];
 
 const leftCol = (
-  <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+  <div className="left-col-inner">
     <h1 className="text-heading1">About Me.</h1>
     {/* eslint-disable-next-line @next/next/no-img-element */}
     <img src="https://framerusercontent.com/images/kvZUjM81xHq7MPsioY0TAcK0ipU.jpg"

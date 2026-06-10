@@ -10,7 +10,7 @@ const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Des
 /* ── Left column content ─────────────────────── */
 function LeftCol() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+    <div className="left-col-inner">
       <h1 className="text-heading1">
         Hello! I&apos;m Magdalena.
       </h1>
