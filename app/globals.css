@@ -102,6 +102,36 @@ html, body {
   font-weight: 500;
 }
 
+/* ─── Word blur-in animation ─────────────────── */
+@keyframes blurWordIn {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+/* ─── Page load fade-in (columns) ───────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.col-left   { animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0ms    both; }
+.col-middle { animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 80ms   both; }
+.col-right  { animation: fadeInUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 160ms  both; }
+
+/* ─── Global link hover transition ───────────── */
+a {
+  transition: color 0.2s cubic-bezier(0.44, 0, 0.56, 1),
+              opacity 0.2s cubic-bezier(0.44, 0, 0.56, 1);
+}
+
 /* ─── Divider ────────────────────────────────── */
 .divider {
   width: 100%;
@@ -120,8 +150,10 @@ html, body {
   color: var(--color-black);
   padding: 6px 0;
   border-bottom: 1px solid var(--color-light-gray);
+  transition: color 0.2s cubic-bezier(0.44, 0, 0.56, 1);
 }
 .service-tag:first-child { border-top: 1px solid var(--color-light-gray); }
+.service-tag:hover { color: var(--color-gray); }
 
 /* ─── Available dot ───────────────────────────── */
 .available-dot {
@@ -144,9 +176,20 @@ html, body {
   display: block;
   text-decoration: none;
   color: inherit;
+  cursor: pointer;
 }
-.project-card img { transition: opacity 0.2s ease; }
-.project-card:hover img { opacity: 0.9; }
+.project-card img {
+  transition: opacity 0.3s cubic-bezier(0.44, 0, 0.56, 1),
+              transform 0.3s cubic-bezier(0.44, 0, 0.56, 1);
+  transform-origin: center;
+}
+.project-card:hover img {
+  opacity: 0.85;
+  transform: scale(1.015);
+}
+.project-card-meta {
+  transition: color 0.2s cubic-bezier(0.44, 0, 0.56, 1);
+}
 
 .project-card-meta {
   display: flex;

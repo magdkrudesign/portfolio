@@ -4,6 +4,7 @@ import Link from "next/link";
 import { projects } from "@/lib/data";
 import PageLayout from "@/components/PageLayout";
 import PageFooter from "@/components/PageFooter";
+import BlurWords from "@/components/BlurWords";
 
 const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Design"];
 
@@ -11,9 +12,13 @@ const services = ["UI/UX Design", "Brand Identity", "Event Design", "Product Des
 function LeftCol() {
   return (
     <div className="left-col-inner">
-      <h1 className="text-heading1">
-        Hello! I&apos;m Magdalena.
-      </h1>
+      <BlurWords
+        as="h1"
+        text="Hello! I'm Magdalena."
+        className="text-heading1"
+        delay={100}
+        stagger={80}
+      />
 
       <div style={{ display: "flex", flexDirection: "row", gap: 8 }}>
         {/* LinkedIn */}
@@ -87,13 +92,20 @@ export default function HomePage() {
   return (
     <PageLayout left={<LeftCol />} right={<RightCol />} footer={<PageFooter />}>
 
-      {/* Subtitle */}
-      <p className="text-subtitle" style={{ maxWidth: 600, marginBottom: 0, color: "rgb(18,18,18)" }}>
-        Senior UX/UI &amp; Brand Designer blending strategy, story, and
-        systems into brands and digital products{" "}
-        <span style={{ color: "rgb(153,153,153)" }}>
-          that are clear, memorable, and built to last.
-        </span>
+      {/* Subtitle — word-by-word blur-in, two parts with different colors */}
+      <p className="text-subtitle" style={{ maxWidth: 600, marginBottom: 0 }}>
+        <BlurWords
+          text="Senior UX/UI & Brand Designer blending strategy, story, and systems into brands and digital products"
+          delay={200}
+          stagger={45}
+          style={{ color: "rgb(18,18,18)" }}
+        />{" "}
+        <BlurWords
+          text="that are clear, memorable, and built to last."
+          delay={200 + 10 * 45}
+          stagger={45}
+          style={{ color: "rgb(153,153,153)" }}
+        />
       </p>
 
       {/* Spacer above "Selected work" */}
